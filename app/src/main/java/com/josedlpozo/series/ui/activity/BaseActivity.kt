@@ -12,11 +12,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
-        ButterKnife.bind(this)
     }
-
-    abstract fun getLayoutId(): Int
 
     fun getTypeFace(): Typeface {
         return Typeface.createFromAsset(assets, "monof55.ttf")
