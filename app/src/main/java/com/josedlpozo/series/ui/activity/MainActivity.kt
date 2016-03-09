@@ -3,6 +3,7 @@ package com.josedlpozo.series.ui.activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import com.josedlpozo.series.KotlinApplication
 import com.josedlpozo.series.R
 import com.josedlpozo.series.model.Serie
@@ -57,5 +58,9 @@ class MainActivity : BaseActivity(), SeriesPresenter.View {
 
     override fun onSerieClick(serie: Serie) {
         Log.d("Serie", "Click "+serie.name)
+    }
+
+    override fun showEmptyCase(){
+        empty_case.visibility = View.VISIBLE
     }
 }

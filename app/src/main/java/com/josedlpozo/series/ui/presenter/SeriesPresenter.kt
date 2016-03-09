@@ -29,7 +29,8 @@ class SeriesPresenter(): Presenter<SeriesPresenter.View>() {
                 view?.hideLoading()
                 (view as SeriesPresenter.View).showSeries(it)
             }else{
-
+                view?.hideLoading()
+                (view as SeriesPresenter.View).showEmptyCase()
             }
         }
     }
@@ -39,5 +40,7 @@ class SeriesPresenter(): Presenter<SeriesPresenter.View>() {
         fun showSeries(series: ArrayList<Serie>?)
 
         fun onSerieClick(serie: Serie)
+
+        fun showEmptyCase()
     }
 }
