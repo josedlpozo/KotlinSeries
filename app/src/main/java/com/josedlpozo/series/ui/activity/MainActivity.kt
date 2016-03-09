@@ -10,7 +10,7 @@ import com.josedlpozo.series.model.Serie
 import com.josedlpozo.series.ui.adapter.SeriesAdapter
 import com.josedlpozo.series.ui.presenter.SeriesPresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivity
 import java.util.*
 import javax.inject.Inject
 
@@ -62,7 +62,7 @@ class MainActivity : BaseActivity(), SeriesPresenter.View {
     }
 
     override fun onSerieClick(serie: Serie) {
-        Log.d("Serie", "Click "+serie.name)
+        startActivity<DetailActivity>(DetailActivity.SERIE_NAME to serie.name)
     }
 
     override fun showEmptyCase(){
