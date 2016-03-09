@@ -32,4 +32,11 @@ class SeriesRepository{
         return series
     }
 
+    fun getByName(name: String) : Serie{
+        series?.forEach {
+            if(it.name.equals(name)) return it
+        }
+        return series?.get(0)!!
+    }
+
 }
