@@ -25,10 +25,15 @@ class MainActivity : BaseActivity(), SeriesPresenter.View {
         setupActivityComponent()
         initPresenter()
         initRecyclerView()
+        initToolbar()
     }
 
     override fun setupActivityComponent() {
         KotlinApplication.appComponent.inject(this)
+    }
+
+    fun initToolbar(){
+        setSupportActionBar(toolbar)
     }
 
     fun initPresenter(){

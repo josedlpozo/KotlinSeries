@@ -1,5 +1,6 @@
 package com.josedlpozo.series
 
+import com.josedlpozo.series.ui.activity.DetailActivity
 import com.josedlpozo.series.ui.activity.MainActivity
 import dagger.Component
 import javax.inject.Singleton
@@ -14,4 +15,6 @@ interface AppComponent {
     fun inject(application: KotlinApplication)
 
     fun inject(activity: MainActivity)
+
+    fun inject(activity: DetailActivity)
 }
