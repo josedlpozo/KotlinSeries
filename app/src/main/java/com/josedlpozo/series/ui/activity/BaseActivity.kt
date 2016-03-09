@@ -14,6 +14,8 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     }
 
+    abstract fun setupActivityComponent()
+
     fun getTypeFace(): Typeface {
         return Typeface.createFromAsset(assets, "monof55.ttf")
     }

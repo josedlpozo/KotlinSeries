@@ -9,19 +9,20 @@ import com.josedlpozo.series.R
 import com.josedlpozo.series.model.Serie
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.series_item.view.*
+import java.util.*
 
 /**
  * Created by josedelpozo on 7/3/16.
  */
-class SeriesAdapter(val seriesList: List<Serie>, val itemClick: (Serie) -> Unit) : RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>(){
+class SeriesAdapter(val seriesList: ArrayList<Serie>?, val itemClick: (Serie) -> Unit) : RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>(){
 
     override fun onBindViewHolder(viewHolder: SeriesViewHolder?, position: Int) {
-        viewHolder?.bindData(seriesList[position])
+        viewHolder?.bindData(seriesList?.get(position))
     }
 
     override fun getItemCount(): Int {
-        Log.d("series", ""+seriesList.size)
-        return seriesList.size
+        Log.d("series", ""+seriesList?.size)
+        return seriesList!!.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SeriesAdapter.SeriesViewHolder? {
@@ -31,10 +32,10 @@ class SeriesAdapter(val seriesList: List<Serie>, val itemClick: (Serie) -> Unit)
 
     class SeriesViewHolder(val view: View, val itemClick: (Serie) -> Unit) : RecyclerView.ViewHolder(view) {
 
-        fun bindData(serie: Serie){
-            view.serie_name.text = serie.name
-            Picasso.with(view.context).load(serie.image).into(view.serie_image)
-            view.setOnClickListener { itemClick(serie) }
+        fun bindData(serie: Serie?){
+            view.serie_name.text = serie?.name
+            Picasso.with(view.context).load(serie?.image).into(view.serie_image)
+            view.setOnClickListener { itemClick(serie!!) }
         }
     }
 

@@ -3,20 +3,36 @@ package com.josedlpozo.series.ui.activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import com.josedlpozo.series.KotlinApplication
 import com.josedlpozo.series.R
 import com.josedlpozo.series.model.Serie
 import com.josedlpozo.series.ui.adapter.SeriesAdapter
+import com.josedlpozo.series.ui.presenter.SeriesPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import java.util.*
+import javax.inject.Inject
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), SeriesPresenter.View {
+
+    @Inject
+    lateinit var presenter : SeriesPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupActivityComponent()
+        initPresenter()
         initRecyclerView()
-        initAdapter()
+    }
+
+    override fun setupActivityComponent() {
+        KotlinApplication.appComponent.inject(this)
+    }
+
+    fun initPresenter(){
+        presenter.view = this
+        presenter.initialize()
     }
 
     fun initRecyclerView(){
@@ -24,23 +40,26 @@ class MainActivity : BaseActivity() {
         seriesRecyclerView.setHasFixedSize(true)
     }
 
-    fun initAdapter(){
-        var series = ArrayList<Serie>()
+    override fun hideLoading() {
+        progress_bar.hide()
+    }
 
-        series.add(Serie("Game of thrones","Great Serie!", "http://www.eliberico.com/wp-content/uploads/2015/02/juego-de-tronos.jpg"))
+    override fun showLoading() {
+        progress_bar.show()
+    }
 
-        series.add(Serie("Game of thrones","Great Serie!", "http://www.eliberico.com/wp-content/uploads/2015/02/juego-de-tronos.jpg"))
+    override fun showSeries(series: ArrayList<Serie>?) {
 
-        series.add(Serie("Game of thrones","Great Serie!", "http://www.eliberico.com/wp-content/uploads/2015/02/juego-de-tronos.jpg"))
-
-        series.add(Serie("Game of thrones","Great Serie!", "http://www.eliberico.com/wp-content/uploads/2015/02/juego-de-tronos.jpg"))
-
-        Log.d("series", "" + series.size)
+        Log.d("series", "" + series?.size)
 
         var seriesAdapter = SeriesAdapter(series) {
-            toast(it.name)
+            presenter.clickSerie(it)
         }
         Log.d("adapter", "init adapter")
         seriesRecyclerView.adapter = seriesAdapter
+    }
+
+    override fun onSerieClick(serie: Serie) {
+        Log.d("Serie", "Click "+serie.name)
     }
 }
