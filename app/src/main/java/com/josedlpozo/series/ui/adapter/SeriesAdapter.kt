@@ -14,15 +14,14 @@ import java.util.*
 /**
  * Created by josedelpozo on 7/3/16.
  */
-class SeriesAdapter(val seriesList: ArrayList<Serie>?, val itemClick: (Serie) -> Unit) : RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>(){
+class SeriesAdapter(val seriesList: ArrayList<Serie>, val itemClick: (Serie) -> Unit) : RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>(){
 
     override fun onBindViewHolder(viewHolder: SeriesViewHolder?, position: Int) {
-        viewHolder?.bindData(seriesList?.get(position))
+        viewHolder?.bindData(seriesList.get(position))
     }
 
     override fun getItemCount(): Int {
-        Log.d("series", ""+seriesList?.size)
-        return seriesList!!.size
+        return seriesList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SeriesAdapter.SeriesViewHolder? {
@@ -32,10 +31,10 @@ class SeriesAdapter(val seriesList: ArrayList<Serie>?, val itemClick: (Serie) ->
 
     class SeriesViewHolder(val view: View, val itemClick: (Serie) -> Unit) : RecyclerView.ViewHolder(view) {
 
-        fun bindData(serie: Serie?){
-            view.serie_name.text = serie?.name
-            Picasso.with(view.context).load(serie?.image).into(view.serie_image)
-            view.setOnClickListener { itemClick(serie!!) }
+        fun bindData(serie: Serie){
+            view.serie_name.text = serie.name
+            Picasso.with(view.context).load(serie.image).into(view.serie_image)
+            view.setOnClickListener { itemClick(serie) }
         }
     }
 

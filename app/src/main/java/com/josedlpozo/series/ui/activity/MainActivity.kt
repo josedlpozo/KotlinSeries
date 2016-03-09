@@ -49,7 +49,7 @@ class MainActivity : BaseActivity(), SeriesPresenter.View {
     }
 
     override fun showSeries(series: ArrayList<Serie>?) {
-        var seriesAdapter = SeriesAdapter(series) {
+        var seriesAdapter = SeriesAdapter(series!!) {
             presenter.clickSerie(it)
         }
         seriesRecyclerView.adapter = seriesAdapter

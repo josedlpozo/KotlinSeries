@@ -20,15 +20,14 @@ class SeriesRepository{
     fun obtainSeriesFromFakeServer(){
         series?.add(Serie("Game of thrones","Great Serie!", "http://www.eliberico.com/wp-content/uploads/2015/02/juego-de-tronos.jpg"))
 
-        series?.add(Serie("Game of thrones","Great Serie!", "http://www.eliberico.com/wp-content/uploads/2015/02/juego-de-tronos.jpg"))
+        series?.add(Serie("Dexter","Great Serie!", "http://static.wixstatic.com/media/9625d4_a90f01cd5cba493daf744a9dce034b7d.jpg"))
 
-        series?.add(Serie("Game of thrones","Great Serie!", "http://www.eliberico.com/wp-content/uploads/2015/02/juego-de-tronos.jpg"))
+        series?.add(Serie("Lost","Great Serie!", "http://vignette4.wikia.nocookie.net/lostpedia/images/a/aa/Lost-season1.png/revision/latest?cb=20061010033648&path-prefix=es"))
 
-        series?.add(Serie("Game of thrones","Great Serie!", "http://www.eliberico.com/wp-content/uploads/2015/02/juego-de-tronos.jpg"))
+        series?.add(Serie("Breaking bad","Great Serie!", "http://nbc.com.co/wp-content/uploads/2015/10/breaking-bad-season6-750x525.png"))
     }
 
     fun getAll() : ArrayList<Serie>?{
-        Log.d("repository", "calling getALL")
         return series
     }
 
