@@ -17,9 +17,9 @@ class KotlinApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         //Global dependencies graph is created here
         appComponent = DaggerAppComponent.builder().rootModule(RootModule(this)).build()
+        appComponent.inject(this)
     }
 
 }
