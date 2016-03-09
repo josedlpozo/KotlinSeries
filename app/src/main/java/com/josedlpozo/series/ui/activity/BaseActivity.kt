@@ -4,6 +4,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import butterknife.ButterKnife
+import com.josedlpozo.series.R
 
 /**
  * Created by josedelpozo on 4/3/16.
@@ -17,6 +18,6 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun setupActivityComponent()
 
     fun getTypeFace(): Typeface {
-        return Typeface.createFromAsset(assets, "monof55.ttf")
+        return Typeface.createFromAsset(assets, getString(R.string.main_typeface))
     }
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">KotlinSeries</string>
     <string name="empty_case">¯\\_(ツ)_/¯</string>
+    <string name="main_typeface">monof55.ttf</string>
 </resources>
