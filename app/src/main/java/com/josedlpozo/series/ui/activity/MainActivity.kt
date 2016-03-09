@@ -49,13 +49,9 @@ class MainActivity : BaseActivity(), SeriesPresenter.View {
     }
 
     override fun showSeries(series: ArrayList<Serie>?) {
-
-        Log.d("series", "" + series?.size)
-
         var seriesAdapter = SeriesAdapter(series) {
             presenter.clickSerie(it)
         }
-        Log.d("adapter", "init adapter")
         seriesRecyclerView.adapter = seriesAdapter
     }
 
