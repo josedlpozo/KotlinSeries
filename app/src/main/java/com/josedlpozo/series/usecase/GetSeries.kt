@@ -26,6 +26,5 @@ class GetSeries {
                 callback(list)
             }
         }
-
     }
 }
