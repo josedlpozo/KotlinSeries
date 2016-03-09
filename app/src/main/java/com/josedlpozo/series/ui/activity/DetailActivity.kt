@@ -29,7 +29,6 @@ class DetailActivity : BaseActivity(), SerieDetailPresenter.View{
         setupActivityComponent()
         initPresenter()
         initToolbar()
-        toast(intent.getStringExtra(SERIE_NAME))
     }
 
     fun initToolbar(){
@@ -58,7 +57,6 @@ class DetailActivity : BaseActivity(), SerieDetailPresenter.View{
     }
 
     override fun showSerie(serie: Serie) {
-
         showImage(serie.image)
         showSerieName(serie.name)
         showDescription(serie.description)
